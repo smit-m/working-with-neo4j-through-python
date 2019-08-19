@@ -17,7 +17,7 @@ import time
 def main():
 
     f = "/Users/smehta/Documents/GitHub/working-with-neo4j-through-python/data/test-data.csv" 
-    graph = Graph("http://localhost:7474/db/data/")                            
+    graph = Graph("http://localhost:7474/graph_test/data/")                            
     with open(f, 'r+') as in_file:
 
         reader = csv.reader(in_file, delimiter=',')
