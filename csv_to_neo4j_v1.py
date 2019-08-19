@@ -26,16 +26,6 @@ Created on Fri Aug 16 14:49:45 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
 import csv
 from py2neo import Graph
 import time
