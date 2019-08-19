@@ -22,7 +22,7 @@ def main():
 
         reader = csv.reader(in_file, delimiter=',')
         next(reader, None)        
-        batch = graph.cypher.begin()                           
+        batch = graph.begin()                           
 
         try:
             i = 0;
@@ -49,7 +49,7 @@ def main():
                     batch.append(query, {"u":userid, "b": brand, "pn": productName})
                     i += 1
                     j += 1
-                batch.process()
+                #atch.process()
 
                 if (i == 2): #submits a batch every 2 lines read
                     batch.commit()
