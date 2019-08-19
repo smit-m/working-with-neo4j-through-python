@@ -42,7 +42,7 @@ import time
 
 def main():
 
-    f = "C:file_path/file.csv" 
+    f = "/Users/smehta/Documents/GitHub/working-with-neo4j-through-python/data/test-data.csv" 
     graph = Graph("http://localhost:7474/db/data/")                            
     with open(f, 'r+') as in_file:
 
