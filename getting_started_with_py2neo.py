@@ -9,3 +9,12 @@
 
 from py2neo import Graph, Node, Relationship
 
+g = Graph()
+tx = g.begin()
+a = Node("Person", name="Alice")
+tx.create(a)
+b = Node("Person", name="Bob")
+ab = Relationship(a, "KNOWS", b)
+tx.create(ab)
+tx.commit()
+g.exists(ab)
