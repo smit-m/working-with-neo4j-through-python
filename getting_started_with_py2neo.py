@@ -9,7 +9,7 @@
 
 from py2neo import Graph, Node, Relationship
 
-g = Graph()
+g = Graph(host="localhost", password = "1234")
 tx = g.begin()
 a = Node("Person", name="Alice")
 tx.create(a)
