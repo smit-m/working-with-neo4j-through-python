@@ -9,6 +9,18 @@
 
 from py2neo import Graph, Node, Relationship
 import csv
+import os
+
+wdir = os.getcwd()
+
+with open(widr+'/data/test-data.csv') as input_file:
+	readCSV = csv.reader(input_file, delimiter=',')
+    for row in readCSV:
+    	#do something
+
+
+
+
 
 
 g = Graph(host="localhost", password = "1234")
