@@ -21,6 +21,25 @@ with open(widr+'/data/test-data.csv') as input_file:
 
 
 
+from py2neo import Graph, Node, Relationship
+
+g = Graph(host="localhost", password = "1234")
+tx = g.begin()
+
+firstperson = ['John', 'Harry', 'Tom']
+secondperson = ['Wick', 'Potter', 'Jerry']
+
+
+for i, j in zip(firstperson, secondperson):
+	a = Node('Person', name = i)
+	b = Node('Person', name = j)
+	tx.create(a)
+	tx.create(b)
+	ab = Relationship(a, 'KNOWS', b)
+	tx.create(ab)
+	tx.commit()
+
+
 
 
 g = Graph(host="localhost", password = "1234")
