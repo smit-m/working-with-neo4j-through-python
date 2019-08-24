@@ -55,7 +55,7 @@ def main():
                     batch.commit()
                     print(str(j) + "lines processed")
                     i = 0                
-                    batch = graph.cypher.begin()
+                    batch = graph.cypher.begin() #this has been deprecated
                 else: 
                     batch.commit() #submits remainder of lines read                       
                     print(str(j) + "lines processed")  
