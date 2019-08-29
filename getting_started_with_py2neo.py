@@ -48,14 +48,3 @@ for i, j in zip(firstperson, secondperson):
 	print('Done 3')
 
 
-
-
-g = Graph(host="localhost", password = "1234")
-tx = g.begin()
-a = Node("Person", name="Alice")
-tx.create(a)
-b = Node("Person", name="Bob")
-ab = Relationship(a, "KNOWS", b)
-tx.create(ab)
-tx.commit()
-g.exists(ab)
