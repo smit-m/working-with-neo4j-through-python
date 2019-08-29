@@ -12,14 +12,61 @@ import csv
 import os
 
 wdir = os.getcwd()
+g = Graph(host="localhost", password = "1234")
 
-with open(widr+'/data/test-data.csv') as input_file:
+
+with open(wdir+'/data/test-data.csv') as input_file:
 	readCSV = csv.reader(input_file, delimiter=',')
+    
     for row in readCSV:
-    	#do something
+    	counter = 1
+    	if counter == 1:
+    		continue
+
+    	tx = g.begin()
+
+    	cols = row.split()
+
+    	#Nodes
+    	userid = Node('userid', id = cols[0])
+    	brand = Node('Brand', name = cols[1])
+    	category = Node('Category', name = cols[2])
+    	url = Node('URL', url = cols[3], sitename = cols[4])
+    	productid = Node('Product', id = cols[7], name = cols[6], price = cols[5])
+    	
+    	tx.create(userid)
+    	tx.create(brand)
+    	tx.create(category)
+    	tx.create(url)
+    	tx.create(productid)
 
 
 
+    	eventtype = cols[8]
+
+    	#Relationships
+    	user_interactswith_product = Relationship(userid, eventtype, productid)
+    	product_madeby_brand = Relationship(productid, 'MADE_BY', brand)
+    	product_belongsto_category = Relationship(productid, 'BELONGS_TO', category)
+    	product_ison_url = Relationship(productid, 'IS_ON', url)
+
+    	tx.create(user_interactswith_product)
+    	tx.create(product_madeby_brand)
+    	tx.create(product_belongsto_category)
+    	tx.create(product_ison_url)
+
+    	tx.commit()
+    	
+    	
+
+
+
+
+
+
+
+
+'''
 
 from py2neo import Graph, Node, Relationship
 
@@ -48,3 +95,4 @@ for i, j in zip(firstperson, secondperson):
 	print('Done 3')
 
 
+'''
