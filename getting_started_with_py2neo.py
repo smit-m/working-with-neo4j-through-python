@@ -20,7 +20,7 @@ with open(wdir+'/data/test-data.csv') as input_file:
     readCSV = csv.reader(input_file, delimiter=',')
     counter = 1
     for row in readCSV:
-
+        
         
         if counter == 1:
             counter += 1
@@ -29,11 +29,11 @@ with open(wdir+'/data/test-data.csv') as input_file:
         print(row)
         #counter += 1
         
-
+        
         tx = g.begin()
-
+        
         cols = row.split()
-
+        
         #Nodes
         userid = Node('userid', id = cols[0])
         brand = Node('Brand', name = cols[1])
@@ -46,11 +46,11 @@ with open(wdir+'/data/test-data.csv') as input_file:
         tx.create(category)
         tx.create(url)
         tx.create(productid)
-
-
-
+        
+        
+        
         eventtype = cols[8]
-
+        
         #Relationships
         user_interactswith_product = Relationship(userid, eventtype, productid)
         print(user_interactswith_product)
@@ -60,7 +60,7 @@ with open(wdir+'/data/test-data.csv') as input_file:
         print(product_belongsto_category)
         product_ison_url = Relationship(productid, 'IS_ON', url)
         print(product_ison_url)
-
+        
         tx.create(user_interactswith_product)
         tx.create(product_madeby_brand)
         tx.create(product_belongsto_category)
