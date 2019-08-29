@@ -23,9 +23,9 @@ with open(wdir+'/data/test-data.csv') as input_file:
         
         if counter == 1:
             continue
-
+        
         print(row)
-
+        
 '''
         tx = g.begin()
 
