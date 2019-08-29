@@ -19,11 +19,14 @@ with open(wdir+'/data/test-data.csv') as input_file:
     readCSV = csv.reader(input_file, delimiter=',')
     counter = 1
     for row in readCSV:
-        
+
         
         if counter == 1:
             continue
-        
+
+        print(row)
+
+'''
         tx = g.begin()
 
         cols = row.split()
@@ -60,7 +63,7 @@ with open(wdir+'/data/test-data.csv') as input_file:
         tx.create(product_belongsto_category)
         tx.create(product_ison_url)
 #       
-        tx.commit()
+        tx.commit()'''
         counter += 1
 
         
