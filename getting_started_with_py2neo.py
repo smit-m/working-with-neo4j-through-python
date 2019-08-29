@@ -63,9 +63,11 @@ with open(wdir+'/data/test-data.csv') as input_file:
         tx.create(product_belongsto_category)
         tx.create(product_ison_url)
 
-        tx.commit()
+        #tx.commit()
         counter += 1
         
+
+tx.commit()
 
 
 
