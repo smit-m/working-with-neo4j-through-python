@@ -46,16 +46,20 @@ with open(wdir+'/data/test-data.csv') as input_file:
         eventtype = cols[8]
 
         #Relationships
-        #user_interactswith_product = Relationship(userid, eventtype, productid)
-        #product_madeby_brand = Relationship(productid, 'MADE_BY', brand)
-        #product_belongsto_category = Relationship(productid, 'BELONGS_TO', category)
-        #product_ison_url = Relationship(productid, 'IS_ON', url)
-#
-        #tx.create(user_interactswith_product)
-        #tx.create(product_madeby_brand)
-        #tx.create(product_belongsto_category)
-        #tx.create(product_ison_url)
-#
+        user_interactswith_product = Relationship(userid, eventtype, productid)
+        print(user_interactswith_product)
+        product_madeby_brand = Relationship(productid, 'MADE_BY', brand)
+        print(product_madeby_brand)
+        product_belongsto_category = Relationship(productid, 'BELONGS_TO', category)
+        print(product_belongsto_category)
+        product_ison_url = Relationship(productid, 'IS_ON', url)
+        print(product_ison_url)
+#       
+        tx.create(user_interactswith_product)
+        tx.create(product_madeby_brand)
+        tx.create(product_belongsto_category)
+        tx.create(product_ison_url)
+#       
         tx.commit()
         counter += 1
 
