@@ -29,28 +29,25 @@ with open(wdir+'/data/test-data.csv') as input_file:
         print(row)
         #counter += 1
         
-        
+
         tx = g.begin()
-        
-        cols = row.split()
-        
+
+        #cols = row.split()
+
         #Nodes
-        userid = Node('userid', id = cols[0])
-        brand = Node('Brand', name = cols[1])
-        category = Node('Category', name = cols[2])
-        url = Node('URL', url = cols[3], sitename = cols[4])
-        productid = Node('Product', id = cols[7], name = cols[6], price = cols[5])
+        userid = Node('userid', id = row[0])
+        brand = Node('Brand', name = row[1])
+        category = Node('Category', name = row[2])
+        url = Node('URL', url = row[3], sitename = row[4])
+        productid = Node('Product', id = row[7], name = row[6], price = row[5])
         
         tx.create(userid)
         tx.create(brand)
         tx.create(category)
         tx.create(url)
         tx.create(productid)
-        
-        
-        
-        eventtype = cols[8]
-        
+        eventtype = row[8]
+
         #Relationships
         user_interactswith_product = Relationship(userid, eventtype, productid)
         print(user_interactswith_product)
@@ -60,12 +57,12 @@ with open(wdir+'/data/test-data.csv') as input_file:
         print(product_belongsto_category)
         product_ison_url = Relationship(productid, 'IS_ON', url)
         print(product_ison_url)
-        
+
         tx.create(user_interactswith_product)
         tx.create(product_madeby_brand)
         tx.create(product_belongsto_category)
         tx.create(product_ison_url)
-        
+
         tx.commit()
         counter += 1
         
