@@ -7,6 +7,7 @@
 #########################################################################
 
 
+
 from py2neo import Graph, Node, Relationship
 import csv
 import os
@@ -22,11 +23,13 @@ with open(wdir+'/data/test-data.csv') as input_file:
 
         
         if counter == 1:
+            counter += 1
             continue
         
         print(row)
+        #counter += 1
         
-'''
+
         tx = g.begin()
 
         cols = row.split()
@@ -57,15 +60,14 @@ with open(wdir+'/data/test-data.csv') as input_file:
         print(product_belongsto_category)
         product_ison_url = Relationship(productid, 'IS_ON', url)
         print(product_ison_url)
-#       
+
         tx.create(user_interactswith_product)
         tx.create(product_madeby_brand)
         tx.create(product_belongsto_category)
         tx.create(product_ison_url)
-#       
-        tx.commit()'''
+        
+        tx.commit()
         counter += 1
-
         
 
 
